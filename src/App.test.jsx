@@ -21,4 +21,7 @@ test('add todo', () => {
   fireEvent.click(button);
   const table = screen.getByRole('table');
   expect(table).toHaveTextContent('Go to coffee');
+  const clearButton = screen.getByText('Clear');
+  fireEvent.click(clearButton);
+  expect(screen.queryByText('Go to coffee')).not.toBeInTheDocument();
 });
